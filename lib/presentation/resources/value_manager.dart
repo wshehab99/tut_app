@@ -1,4 +1,4 @@
-class PaddingValuesManger {
+class PaddingValuesManager {
   static const double p8 = 8.0;
   static const double p10 = 10.0;
   static const double p12 = 12.0;
@@ -8,7 +8,7 @@ class PaddingValuesManger {
   static const double p20 = 20.0;
 }
 
-class MarginValuesManger {
+class MarginValuesManager {
   static const double m8 = 8.0;
   static const double m10 = 10.0;
   static const double m12 = 12.0;
@@ -18,7 +18,10 @@ class MarginValuesManger {
   static const double m20 = 20.0;
 }
 
-class SizeValuesManger {
+class SizeValuesManager {
+  static const double s1 = 1.0;
+  static const double s4 = 4.0;
+
   static const double s8 = 8.0;
   static const double s10 = 10.0;
   static const double s12 = 12.0;

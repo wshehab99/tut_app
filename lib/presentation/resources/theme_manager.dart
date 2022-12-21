@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tut_app/presentation/color_manager.dart';
-import 'package:tut_app/presentation/font_manager.dart';
-import 'package:tut_app/presentation/input_border_manager.dart';
-import 'package:tut_app/presentation/style_manager.dart';
-import 'package:tut_app/presentation/value_manager.dart';
+
+import 'color_manager.dart';
+import 'font_manager.dart';
+import 'input_border_manager.dart';
+import 'style_manager.dart';
+import 'value_manager.dart';
 
 class ThemeManager {
   static ThemeData applicationTheme() {
