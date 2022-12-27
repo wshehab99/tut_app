@@ -64,9 +64,13 @@ class ThemeManager {
           color: ColorManager.darkGrey,
           fontSize: FontSizeManager.s16,
         ),
-        titleMedium: StyleManager.getMediumStyle(
-          color: ColorManager.lightGrey,
+        headlineMedium: StyleManager.getRegularStyle(
+          color: ColorManager.darkGrey,
           fontSize: FontSizeManager.s14,
+        ),
+        titleMedium: StyleManager.getMediumStyle(
+          color: ColorManager.primary,
+          fontSize: FontSizeManager.s16,
         ),
         labelLarge: StyleManager.getRegularStyle(
           color: ColorManager.grey1,
@@ -75,6 +79,10 @@ class ThemeManager {
         bodyLarge: StyleManager.getRegularStyle(
           color: ColorManager.grey,
           fontSize: FontSizeManager.s12,
+        ),
+        displayLarge: StyleManager.getSemiBoldStyle(
+          color: ColorManager.darkGrey,
+          fontSize: FontSizeManager.s16,
         ),
       ),
       // input decoration theme (text form field)
