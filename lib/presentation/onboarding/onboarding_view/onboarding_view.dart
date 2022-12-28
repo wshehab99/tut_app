@@ -6,9 +6,9 @@ import 'package:tut_app/presentation/resources/asset_manger.dart';
 import 'package:tut_app/presentation/resources/color_manager.dart';
 import 'package:tut_app/presentation/resources/routes_manager.dart';
 import 'package:tut_app/presentation/resources/string_manger.dart';
-import 'package:tut_app/presentation/resources/value_manager.dart';
 import '../../../domain/model/slider_object_model.dart';
 import '../../resources/constants_manager.dart';
+import '../../resources/value_manager.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});

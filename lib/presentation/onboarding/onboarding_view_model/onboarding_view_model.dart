@@ -88,7 +88,7 @@ class OnBoardingViewModel extends BaseViewModel
 
   @override
   Stream<SliderObjectView> get outputOnBoardingViewModel =>
-      _streamController.stream.map((event) => event);
+      _streamController.stream.map((slideViewObject) => slideViewObject);
 }
 
 abstract class OnBoardingViewModelInputs {
