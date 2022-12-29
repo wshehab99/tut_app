@@ -1,4 +1,3 @@
-
 import 'package:json_annotation/json_annotation.dart';
 part 'response.g.dart';
 
@@ -11,8 +10,7 @@ class BaseResponse {
   factory BaseResponse.fromJson({required Map<String, dynamic> json}) =>
       _$BaseResponseFromJson(json);
   BaseResponse(this.status, this.message);
-    Map<String, dynamic> toJson() => _$BaseResponseToJson(this);
-
+  Map<String, dynamic> toJson() => _$BaseResponseToJson(this);
 }
 
 @JsonSerializable()
@@ -29,8 +27,8 @@ class CustomerResponse {
     this.id,
     this.name,
     this.numOfNotifications,
-  );  Map<String, dynamic> toJson() => _$CustomerResponseToJson(this);
-
+  );
+  Map<String, dynamic> toJson() => _$CustomerResponseToJson(this);
 }
 
 @JsonSerializable()
@@ -59,6 +57,6 @@ class AuthenticationResponse extends BaseResponse {
   AuthenticationResponse(this.customer, this.contacts) : super(0, '');
   factory AuthenticationResponse.fromJson(Map<String, dynamic> json) =>
       _$AuthenticationResponseFromJson(json);
-        Map<String, dynamic> toJson() => _$AuthenticationResponseToJson(this);
-
+  @override
+  Map<String, dynamic> toJson() => _$AuthenticationResponseToJson(this);
 }
