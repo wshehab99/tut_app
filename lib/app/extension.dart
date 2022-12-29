@@ -1,7 +1,9 @@
+import 'constants.dart';
+
 extension NunNullableString on String? {
   String orEmpty() {
     if (this == null) {
-      return "";
+      return AppConstants.empty;
     } else {
       return this!;
     }
@@ -11,7 +13,7 @@ extension NunNullableString on String? {
 extension NunNullableInteger on int? {
   int orZero() {
     if (this == null) {
-      return 0;
+      return AppConstants.zero;
     } else {
       return this!;
     }
