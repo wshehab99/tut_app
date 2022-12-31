@@ -12,7 +12,9 @@ class _AppServicesClient implements AppServicesClient {
   _AppServicesClient(
     this._dio, {
     this.baseUrl,
-  });
+  }) {
+    baseUrl ??= 'https://g3mv6.mocklab.io/';
+  }
 
   final Dio _dio;
 

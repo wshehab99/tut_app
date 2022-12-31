@@ -54,6 +54,6 @@ AuthenticationResponse _$AuthenticationResponseFromJson(
 Map<String, dynamic> _$AuthenticationResponseToJson(
         AuthenticationResponse instance) =>
     <String, dynamic>{
-      'contacts': instance.contacts,
       'customer': instance.customer,
+      'contacts': instance.contacts,
     };

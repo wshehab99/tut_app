@@ -3,12 +3,12 @@ import 'package:tut_app/app/extension.dart';
 import 'package:tut_app/data/network/failure.dart';
 
 class ErrorHandler implements Exception {
-  late Failure _failure;
+  late Failure failure;
   ErrorHandler.handle(error) {
     if (error is DioError) {
-      _failure = _handleError(error);
+      failure = _handleError(error);
     } else {
-      _failure = DataSource.unknown.getFailure();
+      failure = DataSource.unknown.getFailure();
     }
   }
   Failure _handleError(DioError error) {
@@ -136,4 +136,9 @@ extension DataSourceExtension on DataSource {
         return Failure(ResponseCode.unknown, ResponseMessage.unknown);
     }
   }
+}
+
+class ApiInternalStatus{
+  static const int success = 0;
+  static const int failure = 1;
 }
