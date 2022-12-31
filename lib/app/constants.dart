@@ -6,6 +6,9 @@ class AppConstants {
   static const String applicationJson = "application/json";
   static const String accept = "accept";
   static const String authorization = "authorization";
+
+  static const String language = "language";
   static const int timeOut = 60 * 1000;
   static const int zero = 0;
+  static const String languageKey = "languageKey";
 }
