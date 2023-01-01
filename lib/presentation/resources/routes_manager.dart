@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tut_app/app/di.dart';
 import 'package:tut_app/presentation/forget_password/forget_password_view.dart';
 import 'package:tut_app/presentation/login/login_view/login_view.dart';
 import 'package:tut_app/presentation/main/main_view.dart';
@@ -28,6 +29,7 @@ class RouteGenerator {
       case RoutesManager.storeDetailsRoute:
         return MaterialPageRoute(builder: (_) => const StoreDetailsView());
       case RoutesManager.loginRoute:
+        initLoginModule();
         return MaterialPageRoute(builder: (_) => const LoginView());
       case RoutesManager.registerRoute:
         return MaterialPageRoute(builder: (_) => const RegisterView());

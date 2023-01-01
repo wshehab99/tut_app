@@ -63,22 +63,22 @@ class _$LoginObjectCopyWithImpl<$Res, $Val extends LoginObject>
 }
 
 /// @nodoc
-abstract class _$$_$LoginObjectCopyWith<$Res>
+abstract class _$$_LoginObjectCopyWith<$Res>
     implements $LoginObjectCopyWith<$Res> {
-  factory _$$_$LoginObjectCopyWith(
-          _$_$LoginObject value, $Res Function(_$_$LoginObject) then) =
-      __$$_$LoginObjectCopyWithImpl<$Res>;
+  factory _$$_LoginObjectCopyWith(
+          _$_LoginObject value, $Res Function(_$_LoginObject) then) =
+      __$$_LoginObjectCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String username, String password});
 }
 
 /// @nodoc
-class __$$_$LoginObjectCopyWithImpl<$Res>
-    extends _$LoginObjectCopyWithImpl<$Res, _$_$LoginObject>
-    implements _$$_$LoginObjectCopyWith<$Res> {
-  __$$_$LoginObjectCopyWithImpl(
-      _$_$LoginObject _value, $Res Function(_$_$LoginObject) _then)
+class __$$_LoginObjectCopyWithImpl<$Res>
+    extends _$LoginObjectCopyWithImpl<$Res, _$_LoginObject>
+    implements _$$_LoginObjectCopyWith<$Res> {
+  __$$_LoginObjectCopyWithImpl(
+      _$_LoginObject _value, $Res Function(_$_LoginObject) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_$LoginObjectCopyWithImpl<$Res>
     Object? username = null,
     Object? password = null,
   }) {
-    return _then(_$_$LoginObject(
+    return _then(_$_LoginObject(
       null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_$LoginObjectCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_$LoginObject implements _$LoginObject {
-  _$_$LoginObject(this.username, this.password);
+class _$_LoginObject implements _LoginObject {
+  _$_LoginObject(this.username, this.password);
 
   @override
   final String username;
@@ -119,7 +119,7 @@ class _$_$LoginObject implements _$LoginObject {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_$LoginObject &&
+            other is _$_LoginObject &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.password, password) ||
@@ -132,13 +132,13 @@ class _$_$LoginObject implements _$LoginObject {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_$LoginObjectCopyWith<_$_$LoginObject> get copyWith =>
-      __$$_$LoginObjectCopyWithImpl<_$_$LoginObject>(this, _$identity);
+  _$$_LoginObjectCopyWith<_$_LoginObject> get copyWith =>
+      __$$_LoginObjectCopyWithImpl<_$_LoginObject>(this, _$identity);
 }
 
-abstract class _$LoginObject implements LoginObject {
-  factory _$LoginObject(final String username, final String password) =
-      _$_$LoginObject;
+abstract class _LoginObject implements LoginObject {
+  factory _LoginObject(final String username, final String password) =
+      _$_LoginObject;
 
   @override
   String get username;
@@ -146,6 +146,6 @@ abstract class _$LoginObject implements LoginObject {
   String get password;
   @override
   @JsonKey(ignore: true)
-  _$$_$LoginObjectCopyWith<_$_$LoginObject> get copyWith =>
+  _$$_LoginObjectCopyWith<_$_LoginObject> get copyWith =>
       throw _privateConstructorUsedError;
 }
