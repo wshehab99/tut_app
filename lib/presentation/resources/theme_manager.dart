@@ -98,11 +98,11 @@ class ThemeManager {
 
         // enabled border style
         enabledBorder: InputBorderManager.getInputBorder(
-          color: ColorManager.primary,
+          color: ColorManager.grey,
         ),
         // focused border style
         focusedBorder: InputBorderManager.getInputBorder(
-          color: ColorManager.grey,
+          color: ColorManager.primary,
         ),
 
         // error border style
