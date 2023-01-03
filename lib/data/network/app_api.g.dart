@@ -40,7 +40,7 @@ class _AppServicesClient implements AppServicesClient {
     )
             .compose(
               _dio.options,
-              '/login',
+              '/api/login',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -21,5 +21,9 @@ class StringManger {
   static const passwordError = "Please enter a valid password";
 
   static const login = "Login";
-  static const register = "Not a member? register";
+  static const register = "Not a member? Sign Up";
+  static const loading = "Loading...";
+  static const retryAgain = "Retry again";
+  static const ok = "Ok";
+  static const cancel = "Cancel";
 }

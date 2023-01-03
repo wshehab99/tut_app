@@ -10,7 +10,7 @@ abstract class AppServicesClient {
     Dio dio, {
     String baseUrl,
   }) = _AppServicesClient;
-  @POST("/login")
+  @POST("/api/login")
   Future<AuthenticationResponse> login(
     @Field("email") String email,
     @Field("password") String password,

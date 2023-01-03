@@ -1,7 +1,11 @@
 import 'dart:async';
 
+import 'package:tut_app/app/constants.dart';
 import 'package:tut_app/domain/use_case/login_use_case.dart';
-import 'package:tut_app/presentation/common/freezed_data_classes.dart';
+import 'package:tut_app/presentation/common/freezed_data_classes/freezed_data_classes.dart';
+import 'package:tut_app/presentation/common/state_renderer/state_renderer.dart';
+import 'package:tut_app/presentation/common/state_renderer/state_renderer_impl.dart';
+import 'package:tut_app/presentation/resources/string_manger.dart';
 
 import '../../../data/network/request.dart';
 import '../../base/base_view_model.dart';
@@ -19,6 +23,7 @@ class LoginViewModel extends BaseViewModel
   LoginViewModel(this._loginUseCase);
   @override
   void dispose() {
+    super.dispose();
     _passwordStreamController.close();
     _userNameStreamController.close();
     _areAllInputsValid.close();
@@ -26,14 +31,23 @@ class LoginViewModel extends BaseViewModel
 
   @override
   void init() {
-    // TODO: implement init
+    inputState.add(ContentState());
   }
 
 // inputs
   @override
-  login() {
-    _loginUseCase
-        .execute(LoginRequest(loginObject.username, loginObject.password));
+  login() async {
+    inputState.add(
+        LoadingState(stateRendererType: StateRendererType.loadingPopupState));
+    (await _loginUseCase
+            .execute(LoginRequest(loginObject.username, loginObject.password)))
+        .fold(
+            (failure) => {
+                  inputState.add(ErrorState(
+                      stateRendererType: StateRendererType.errorPopupState,
+                      message: failure.message))
+                },
+            (auth) => {inputState.add(ContentState())});
   }
 
   @override

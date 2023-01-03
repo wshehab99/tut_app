@@ -9,6 +9,14 @@ import 'value_manager.dart';
 class ThemeManager {
   static ThemeData applicationTheme() {
     return ThemeData(
+      //dialog theme
+      dialogTheme: DialogTheme(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(SizeValuesManager.s14),
+          ),
+          elevation: SizeValuesManager.s1,
+          backgroundColor: ColorManager.transparent),
+
       // main colors
       primaryColor: ColorManager.primary,
       primaryColorLight: ColorManager.lightPrimary,
@@ -79,6 +87,10 @@ class ThemeManager {
         bodyLarge: StyleManager.getRegularStyle(
           color: ColorManager.grey,
           fontSize: FontSizeManager.s12,
+        ),
+        bodyMedium: StyleManager.getRegularStyle(
+          color: ColorManager.black,
+          fontSize: FontSizeManager.s18,
         ),
         displayLarge: StyleManager.getSemiBoldStyle(
           color: ColorManager.darkGrey,
