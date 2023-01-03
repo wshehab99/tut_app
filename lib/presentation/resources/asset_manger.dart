@@ -10,3 +10,10 @@ class ImageAsset {
   static const String leftArrowIc = "$_imagePath/left_arrow_ic.svg";
   static const String rightArrowIc = "$_imagePath/right_arrow_ic.svg";
 }
+
+class JsonAssetManager {
+  static const String _jsonPath = "assets/json";
+  static const String loading = "$_jsonPath/loading.json";
+  static const String error = "$_jsonPath/error.json";
+  static const String empty = "$_jsonPath/empty.json";
+}

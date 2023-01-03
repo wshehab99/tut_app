@@ -21,6 +21,7 @@ class DioFactory {
       sendTimeout: AppConstants.timeOut,
       connectTimeout: AppConstants.timeOut,
       receiveTimeout: AppConstants.timeOut,
+      followRedirects: false,
     );
     if (!kReleaseMode) {
       // its debug mode so print app logs

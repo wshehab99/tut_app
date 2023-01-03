@@ -6,6 +6,7 @@ class ErrorHandler implements Exception {
   late Failure failure;
   ErrorHandler.handle(error) {
     if (error is DioError) {
+      print(error.message);
       failure = _handleError(error);
     } else {
       failure = DataSource.unknown.getFailure();
@@ -138,7 +139,7 @@ extension DataSourceExtension on DataSource {
   }
 }
 
-class ApiInternalStatus{
+class ApiInternalStatus {
   static const int success = 0;
   static const int failure = 1;
 }
