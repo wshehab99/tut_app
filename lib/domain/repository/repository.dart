@@ -5,4 +5,6 @@ import 'package:tut_app/domain/model/slider_object_model.dart';
 
 abstract class Repository {
   Future<Either<Failure, Authentication>> login(LoginRequest request);
+  Future<Either<Failure, ForgetPasswordModel>> forgetPassword(
+      ForgetPasswordRequest request);
 }

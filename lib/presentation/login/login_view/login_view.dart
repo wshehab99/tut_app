@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:tut_app/app/app_preferences.dart';
 import 'package:tut_app/app/di.dart';
 import 'package:tut_app/presentation/common/state_renderer/state_renderer_impl.dart';
 import 'package:tut_app/presentation/login/login_view_model/login_view_model.dart';
@@ -20,12 +22,22 @@ class _LoginViewState extends State<LoginView> {
   final LoginViewModel _loginViewModel = instance<LoginViewModel>();
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final AppPreferences _appPref = instance<AppPreferences>();
+
   _bind() {
     _loginViewModel.init();
     _userNameController.addListener(
         () => _loginViewModel.setUserName(_userNameController.text));
     _passwordController.addListener(
         () => _loginViewModel.setPassword(_passwordController.text));
+    _loginViewModel.isUserLoggedIn.stream.listen((isUserLoggedInSuccessfully) {
+      if (isUserLoggedInSuccessfully) {
+        SchedulerBinding.instance.addPostFrameCallback((_) {
+          _appPref.setLoggedInSuccessfully();
+          Navigator.of(context).pushReplacementNamed(RoutesManager.mainRoute);
+        });
+      }
+    });
   }
 
   @override

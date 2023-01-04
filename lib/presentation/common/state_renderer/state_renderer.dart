@@ -83,11 +83,14 @@ class StateRenderer extends StatelessWidget {
   Widget _getItemColumn(
       {required List<Widget> children,
       MainAxisSize mainAxisSize = MainAxisSize.max}) {
-    return Column(
-      mainAxisSize: mainAxisSize,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: children,
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        mainAxisSize: mainAxisSize,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: children,
+      ),
     );
   }
 
@@ -118,10 +121,10 @@ class StateRenderer extends StatelessWidget {
   }
 
   Widget _getAnimatedImage(String jsonName) {
-    return SizedBox(
+    return Lottie.asset(
+      jsonName,
       height: SizeValuesManager.s100,
       width: SizeValuesManager.s100,
-      child: Lottie.asset(jsonName),
     );
   }
 
@@ -134,7 +137,9 @@ class StateRenderer extends StatelessWidget {
 
   Widget _getRetryButton(context, String text) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: PaddingValuesManager.p28),
+      padding: const EdgeInsets.symmetric(
+          horizontal: PaddingValuesManager.p28,
+          vertical: PaddingValuesManager.p14),
       child: SizedBox(
           width: double.infinity,
           height: SizeValuesManager.s40,

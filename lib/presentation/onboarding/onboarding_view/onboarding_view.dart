@@ -6,6 +6,8 @@ import 'package:tut_app/presentation/resources/asset_manger.dart';
 import 'package:tut_app/presentation/resources/color_manager.dart';
 import 'package:tut_app/presentation/resources/routes_manager.dart';
 import 'package:tut_app/presentation/resources/string_manger.dart';
+import '../../../app/app_preferences.dart';
+import '../../../app/di.dart';
 import '../../../domain/model/slider_object_model.dart';
 import '../../resources/constants_manager.dart';
 import '../../resources/value_manager.dart';
@@ -20,9 +22,12 @@ class OnBoardingView extends StatefulWidget {
 class _OnBoardingViewState extends State<OnBoardingView> {
   final PageController _controller = PageController();
   final OnBoardingViewModel _model = OnBoardingViewModel();
+  final AppPreferences _appPref = instance<AppPreferences>();
+
   @override
   void initState() {
     _model.init();
+    _appPref.setOnboardingViewed();
     super.initState();
   }
 

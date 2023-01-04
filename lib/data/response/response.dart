@@ -61,3 +61,11 @@ class AuthenticationResponse extends BaseResponse {
   @override
   Map<String, dynamic> toJson() => _$AuthenticationResponseToJson(this);
 }
+
+class ForgetPasswordResponse extends BaseResponse {
+  ForgetPasswordResponse(String message) : super(0, message);
+  factory ForgetPasswordResponse.fromJson(Map<String, dynamic> json) =>
+      _$ForgetPasswordResponseFromJson(json);
+  @override
+  Map<String, dynamic> toJson() => _$ForgetPasswordResponseToJson(this);
+}

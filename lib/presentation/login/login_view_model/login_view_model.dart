@@ -1,11 +1,9 @@
 import 'dart:async';
 
-import 'package:tut_app/app/constants.dart';
 import 'package:tut_app/domain/use_case/login_use_case.dart';
 import 'package:tut_app/presentation/common/freezed_data_classes/freezed_data_classes.dart';
 import 'package:tut_app/presentation/common/state_renderer/state_renderer.dart';
 import 'package:tut_app/presentation/common/state_renderer/state_renderer_impl.dart';
-import 'package:tut_app/presentation/resources/string_manger.dart';
 
 import '../../../data/network/request.dart';
 import '../../base/base_view_model.dart';
@@ -18,6 +16,7 @@ class LoginViewModel extends BaseViewModel
       StreamController<String>.broadcast();
   final StreamController _areAllInputsValid =
       StreamController<void>.broadcast();
+  final StreamController isUserLoggedIn = StreamController<bool>();
   LoginObject loginObject = LoginObject("", "");
   final LoginUseCase _loginUseCase;
   LoginViewModel(this._loginUseCase);
@@ -46,8 +45,10 @@ class LoginViewModel extends BaseViewModel
                   inputState.add(ErrorState(
                       stateRendererType: StateRendererType.errorPopupState,
                       message: failure.message))
-                },
-            (auth) => {inputState.add(ContentState())});
+                }, (auth) {
+      inputState.add(ContentState());
+      isUserLoggedIn.add(true);
+    });
   }
 
   @override

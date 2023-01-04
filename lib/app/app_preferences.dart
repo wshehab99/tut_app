@@ -16,4 +16,16 @@ class AppPreferences {
       return LanguageType.english.getLanguage();
     }
   }
+
+  bool isOnboardingViewed() =>
+      _sharedPreferences.getBool(AppConstants.onBoardingView) ?? false;
+  bool isLoggedInSuccessfully() =>
+      _sharedPreferences.getBool(AppConstants.loginSuccessfully) ?? false;
+  Future<void> setLoggedInSuccessfully() async {
+    _sharedPreferences.setBool(AppConstants.loginSuccessfully, true);
+  }
+
+  Future<void> setOnboardingViewed() async {
+    _sharedPreferences.setBool(AppConstants.onBoardingView, true);
+  }
 }
