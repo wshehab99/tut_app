@@ -1,4 +1,5 @@
 import 'package:tut_app/app/constants.dart';
+import 'package:tut_app/app/extension.dart';
 import 'package:tut_app/domain/model/slider_object_model.dart';
 
 import '../response/response.dart';
@@ -24,6 +25,14 @@ extension AuthenticationResponseMapper on AuthenticationResponse? {
     return Authentication(
       this?.customer.toDomain(),
       this?.contacts.toDomain(),
+    );
+  }
+}
+
+extension ForgetPasswordResponseMapper on ForgetPasswordResponse? {
+  ForgetPasswordModel toDomain() {
+    return ForgetPasswordModel(
+      this?.message.orEmpty() ?? "",
     );
   }
 }

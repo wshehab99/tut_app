@@ -49,3 +49,9 @@ class Authentication {
   Contacts? contacts;
   Authentication(this.customer, this.contacts);
 }
+
+class ForgetPasswordModel {
+  String message;
+
+  ForgetPasswordModel(this.message);
+}

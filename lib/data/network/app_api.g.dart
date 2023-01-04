@@ -61,4 +61,27 @@ class _AppServicesClient implements AppServicesClient {
     }
     return requestOptions;
   }
+
+  @override
+  Future<ForgetPasswordResponse> forgetPassword(String email) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {'email': email};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ForgetPasswordResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/forget_password',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ForgetPasswordResponse.fromJson(_result.data!);
+    return value;
+  }
 }

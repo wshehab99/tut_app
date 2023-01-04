@@ -57,3 +57,15 @@ Map<String, dynamic> _$AuthenticationResponseToJson(
       'customer': instance.customer,
       'contacts': instance.contacts,
     };
+ForgetPasswordResponse _$ForgetPasswordResponseFromJson(
+        Map<String, dynamic> json) =>
+    ForgetPasswordResponse(
+      json['message'] as String,
+    );
+
+Map<String, dynamic> _$ForgetPasswordResponseToJson(
+        ForgetPasswordResponse instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'status': instance.status,
+    };

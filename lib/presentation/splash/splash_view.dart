@@ -7,6 +7,8 @@ import 'package:tut_app/presentation/resources/color_manager.dart';
 import 'package:tut_app/presentation/resources/routes_manager.dart';
 import 'package:tut_app/presentation/resources/value_manager.dart';
 
+import '../../app/app_preferences.dart';
+import '../../app/di.dart';
 import '../resources/constants_manager.dart';
 
 class SplashView extends StatefulWidget {
@@ -18,6 +20,8 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   Timer? _timer;
+  final AppPreferences _appPref = instance<AppPreferences>();
+
   _startDelay() {
     _timer = Timer(
         const Duration(
@@ -27,7 +31,13 @@ class _SplashViewState extends State<SplashView> {
   }
 
   _goNext() {
-    Navigator.pushReplacementNamed(context, RoutesManager.onboardingRoute);
+    if (_appPref.isLoggedInSuccessfully()) {
+      Navigator.pushReplacementNamed(context, RoutesManager.mainRoute);
+    } else if (_appPref.isOnboardingViewed()) {
+      Navigator.pushReplacementNamed(context, RoutesManager.loginRoute);
+    } else {
+      Navigator.pushReplacementNamed(context, RoutesManager.onboardingRoute);
+    }
   }
 
   @override
@@ -46,11 +56,6 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.primary,
-      appBar: AppBar(
-          toolbarHeight: 0,
-          elevation: SizeValuesManager.s0,
-          systemOverlayStyle:
-              const SystemUiOverlayStyle(statusBarColor: ColorManager.primary)),
       body: Center(
           child: Image.asset(
         ImageAsset.splashLogo,

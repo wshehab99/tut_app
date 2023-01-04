@@ -16,6 +16,7 @@ class ThemeManager {
           ),
           elevation: SizeValuesManager.s1,
           backgroundColor: ColorManager.transparent),
+      scaffoldBackgroundColor: ColorManager.white,
 
       // main colors
       primaryColor: ColorManager.primary,
@@ -23,6 +24,7 @@ class ThemeManager {
       primaryColorDark: ColorManager.darkPrimary,
       disabledColor: ColorManager.grey1,
       splashColor: ColorManager.lightPrimary,
+
       // cardView theme
       cardTheme: const CardTheme(
         color: ColorManager.white,
