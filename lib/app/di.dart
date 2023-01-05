@@ -9,9 +9,12 @@ import 'package:tut_app/data/network/network_info.dart';
 import 'package:tut_app/data/network/remote_data_source.dart';
 import 'package:tut_app/domain/repository/repository.dart';
 import 'package:tut_app/domain/use_case/login_use_case.dart';
+import 'package:tut_app/domain/use_case/register_use_case.dart';
 import 'package:tut_app/presentation/forget_password/forget_password_view_model/forget_password_view_model.dart';
 import 'package:tut_app/presentation/login/login_view_model/login_view_model.dart';
+import 'package:tut_app/presentation/register/register_view_model/register_view_model.dart';
 import '../data/repository.dart';
+import '../domain/use_case/forget_password_use_case.dart';
 
 final instance = GetIt.instance;
 Future<void> initAppModule() async {
@@ -46,6 +49,15 @@ void initLoginModule() {
         () => LoginUseCase(instance<Repository>()));
     instance.registerFactory<LoginViewModel>(
         () => LoginViewModel(instance<LoginUseCase>()));
+  }
+}
+
+void initRegisterModule() {
+  if (!GetIt.I.isRegistered<RegisterUseCase>()) {
+    instance.registerFactory<RegisterUseCase>(
+        () => RegisterUseCase(instance<Repository>()));
+    instance.registerFactory<RegisterViewModel>(
+        () => RegisterViewModel(instance<RegisterUseCase>()));
   }
 }
 

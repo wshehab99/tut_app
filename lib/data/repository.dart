@@ -29,7 +29,7 @@ class RepositoryImpl implements Repository {
               Failure(ApiInternalStatus.failure, response.message.orEmpty()));
         }
       } catch (error) {
-        return left(ErrorHandler.handle(error).failure);
+        return Left(ErrorHandler.handle(error).failure);
       }
     } else {
       return Left(DataSource.noInternetConnection.getFailure());
@@ -49,7 +49,27 @@ class RepositoryImpl implements Repository {
               Failure(ApiInternalStatus.failure, response.message.orEmpty()));
         }
       } catch (error) {
-        return left(ErrorHandler.handle(error).failure);
+        return Left(ErrorHandler.handle(error).failure);
+      }
+    } else {
+      return Left(DataSource.noInternetConnection.getFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Authentication>> register(
+      RegisterRequest request) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _remoteDataSource.register(request);
+        if (response.status == ApiInternalStatus.success) {
+          return Right(response.toDomain());
+        } else {
+          return Left(
+              Failure(ApiInternalStatus.failure, response.message.orEmpty()));
+        }
+      } catch (error) {
+        return Left(ErrorHandler.handle(error).failure);
       }
     } else {
       return Left(DataSource.noInternetConnection.getFailure());

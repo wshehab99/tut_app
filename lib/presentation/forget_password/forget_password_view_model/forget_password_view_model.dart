@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'package:tut_app/app/app_functions.dart';
 import 'package:tut_app/data/network/request.dart';
-import 'package:tut_app/domain/use_case/login_use_case.dart';
 import 'package:tut_app/presentation/base/base_view_model.dart';
 import 'package:tut_app/presentation/common/state_renderer/state_renderer.dart';
 import 'package:tut_app/presentation/common/state_renderer/state_renderer_impl.dart';
+
+import '../../../domain/use_case/forget_password_use_case.dart';
 
 class ForgetPasswordViewModel extends BaseViewModel
     with ForgetPasswordInputs, ForgetPasswordOutputs {
@@ -30,13 +32,8 @@ class ForgetPasswordViewModel extends BaseViewModel
   }
 
   @override
-  Stream<bool> get isEmailValid =>
-      _emailStreamController.stream.map((email) => _checkValidity(email));
-  bool _checkValidity(String email) {
-    return RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(email);
-  }
+  Stream<bool> get isEmailValid => _emailStreamController.stream
+      .map((email) => AppFunctions.checkEmailValidity(email));
 
   @override
   setEmail(String value) {
@@ -55,7 +52,9 @@ class ForgetPasswordViewModel extends BaseViewModel
           stateRendererType: StateRendererType.errorPopupState,
           message: failure.message));
     }, (forgetPasswordModel) {
-      inputState.add(ContentState());
+      inputState.add(SuccessState(
+          stateRendererType: StateRendererType.successPopupState,
+          message: forgetPasswordModel.message));
     });
   }
 
@@ -65,7 +64,7 @@ class ForgetPasswordViewModel extends BaseViewModel
   @override
   Stream<bool> get outputAreAllInputIsValid =>
       _areAllInputValidStreamController.stream
-          .map((_) => _checkValidity(_email));
+          .map((_) => AppFunctions.checkEmailValidity(_email));
 }
 
 abstract class ForgetPasswordInputs {

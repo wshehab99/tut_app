@@ -4,7 +4,7 @@ import 'package:tut_app/presentation/forget_password/forget_password_view/forget
 import 'package:tut_app/presentation/login/login_view/login_view.dart';
 import 'package:tut_app/presentation/main/main_view.dart';
 import 'package:tut_app/presentation/onboarding/onboarding_view/onboarding_view.dart';
-import 'package:tut_app/presentation/register/register_view.dart';
+import 'package:tut_app/presentation/register/register_view/register_view.dart';
 import 'package:tut_app/presentation/resources/string_manger.dart';
 import 'package:tut_app/presentation/splash/splash_view.dart';
 import 'package:tut_app/presentation/store_details/store_details_view.dart';
@@ -32,6 +32,7 @@ class RouteGenerator {
         initLoginModule();
         return MaterialPageRoute(builder: (_) => const LoginView());
       case RoutesManager.registerRoute:
+        initRegisterModule();
         return MaterialPageRoute(builder: (_) => const RegisterView());
       case RoutesManager.forgetPasswordRoute:
         initForgetPasswordModule();

@@ -14,15 +14,3 @@ class LoginUseCase implements BaseUseCase<LoginRequest, Authentication> {
     return await _repository.login(input);
   }
 }
-
-class ForgetPasswordUseCase
-    implements BaseUseCase<ForgetPasswordRequest, ForgetPasswordModel> {
-  final Repository _repository;
-  ForgetPasswordUseCase(this._repository);
-
-  @override
-  Future<Either<Failure, ForgetPasswordModel>> execute(
-      ForgetPasswordRequest input) async {
-    return await _repository.forgetPassword(input);
-  }
-}
