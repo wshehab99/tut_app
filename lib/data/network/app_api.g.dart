@@ -49,21 +49,8 @@ class _AppServicesClient implements AppServicesClient {
     return value;
   }
 
-  RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
-    if (T != dynamic &&
-        !(requestOptions.responseType == ResponseType.bytes ||
-            requestOptions.responseType == ResponseType.stream)) {
-      if (T == String) {
-        requestOptions.responseType = ResponseType.plain;
-      } else {
-        requestOptions.responseType = ResponseType.json;
-      }
-    }
-    return requestOptions;
-  }
-
   @override
-  Future<ForgetPasswordResponse> forgetPassword(String email) async {
+  Future<ForgetPasswordResponse> forgetPassword(email) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -83,5 +70,53 @@ class _AppServicesClient implements AppServicesClient {
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ForgetPasswordResponse.fromJson(_result.data!);
     return value;
+  }
+
+  @override
+  Future<AuthenticationResponse> register(
+    username,
+    email,
+    password,
+    phoneNumber,
+    profilePicture,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {
+      'email': username,
+      'email': email,
+      'password': password,
+      'email': phoneNumber,
+      'email': profilePicture,
+    };
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<AuthenticationResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/register',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = AuthenticationResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
+    if (T != dynamic &&
+        !(requestOptions.responseType == ResponseType.bytes ||
+            requestOptions.responseType == ResponseType.stream)) {
+      if (T == String) {
+        requestOptions.responseType = ResponseType.plain;
+      } else {
+        requestOptions.responseType = ResponseType.json;
+      }
+    }
+    return requestOptions;
   }
 }

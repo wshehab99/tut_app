@@ -19,4 +19,12 @@ abstract class AppServicesClient {
   Future<ForgetPasswordResponse> forgetPassword(
     @Field("email") String email,
   );
+  @POST("/api/register")
+  Future<AuthenticationResponse> register(
+    @Field("email") String username,
+    @Field("email") String email,
+    @Field("password") String password,
+    @Field("email") String phoneNumber,
+    @Field("email") String profilePicture,
+  );
 }

@@ -95,7 +95,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                               _forgetPasswordViewModel.forgetPassword();
                             }
                           : null,
-                      child: const Text(StringManger.login),
+                      child: const Text(StringManger.resetPassword),
                     ),
                   );
                 }),

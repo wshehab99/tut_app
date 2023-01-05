@@ -28,4 +28,6 @@ class StringManger {
   static const cancel = "Cancel";
   static const email = "Email";
   static const emailError = "Please enter a valid email address";
+
+  static const resetPassword = "Reset your password";
 }

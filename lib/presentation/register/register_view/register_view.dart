@@ -10,6 +10,12 @@ class RegisterView extends StatefulWidget {
 class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      body: _getContent(),
+    );
+  }
+
+  Widget _getContent() {
     return Container();
   }
 }
