@@ -44,64 +44,62 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   }
 
   Widget _getContent() {
-    return Container(
-      child: SingleChildScrollView(
-          child: Column(
-        children: [
-          const SizedBox(
-            height: SizeValuesManager.s100,
+    return SingleChildScrollView(
+        child: Column(
+      children: [
+        const SizedBox(
+          height: SizeValuesManager.s100,
+        ),
+        Center(
+          child: Image.asset(
+            ImageAsset.splashLogo,
           ),
-          Center(
-            child: Image.asset(
-              ImageAsset.splashLogo,
-            ),
-          ),
-          const SizedBox(
-            height: SizeValuesManager.s28,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: PaddingValuesManager.p28),
-            child: StreamBuilder<bool>(
-                stream: _forgetPasswordViewModel.isEmailValid,
-                builder: (context, snapshots) {
-                  return TextFormField(
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                      hintText: StringManger.email,
-                      labelText: StringManger.email,
-                      errorText: (snapshots.data ?? true)
-                          ? null
-                          : StringManger.emailError,
-                    ),
-                  );
-                }),
-          ),
-          const SizedBox(
-            height: SizeValuesManager.s28,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: PaddingValuesManager.p28),
-            child: StreamBuilder<bool>(
-                stream: _forgetPasswordViewModel.outputAreAllInputIsValid,
-                builder: (context, snapshots) {
-                  return SizedBox(
-                    width: double.infinity,
-                    height: SizeValuesManager.s40,
-                    child: ElevatedButton(
-                      onPressed: (snapshots.data ?? false)
-                          ? () {
-                              _forgetPasswordViewModel.forgetPassword();
-                            }
-                          : null,
-                      child: const Text(StringManger.resetPassword),
-                    ),
-                  );
-                }),
-          ),
-        ],
-      )),
-    );
+        ),
+        const SizedBox(
+          height: SizeValuesManager.s28,
+        ),
+        Padding(
+          padding:
+              const EdgeInsets.symmetric(horizontal: PaddingValuesManager.p28),
+          child: StreamBuilder<bool>(
+              stream: _forgetPasswordViewModel.isEmailValid,
+              builder: (context, snapshots) {
+                return TextFormField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    hintText: StringManger.email,
+                    labelText: StringManger.email,
+                    errorText: (snapshots.data ?? true)
+                        ? null
+                        : StringManger.emailError,
+                  ),
+                );
+              }),
+        ),
+        const SizedBox(
+          height: SizeValuesManager.s28,
+        ),
+        Padding(
+          padding:
+              const EdgeInsets.symmetric(horizontal: PaddingValuesManager.p28),
+          child: StreamBuilder<bool>(
+              stream: _forgetPasswordViewModel.outputAreAllInputIsValid,
+              builder: (context, snapshots) {
+                return SizedBox(
+                  width: double.infinity,
+                  height: SizeValuesManager.s40,
+                  child: ElevatedButton(
+                    onPressed: (snapshots.data ?? false)
+                        ? () {
+                            _forgetPasswordViewModel.forgetPassword();
+                          }
+                        : null,
+                    child: const Text(StringManger.resetPassword),
+                  ),
+                );
+              }),
+        ),
+      ],
+    ));
   }
 }

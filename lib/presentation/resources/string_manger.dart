@@ -16,18 +16,28 @@ class StringManger {
   static const skip = "Skip";
   static const username = "Username";
   static const password = "Password";
+
   static const forgetPassword = "Forget password?";
   static const usernameError = "Please enter a valid username";
   static const passwordError = "Please enter a valid password";
 
   static const login = "Login";
-  static const register = "Not a member? Sign Up";
+  static const register = "Register";
+
+  static const notMember = "Not a member? Sign Up";
   static const loading = "Loading...";
   static const retryAgain = "Retry again";
   static const ok = "Ok";
   static const cancel = "Cancel";
   static const email = "Email";
   static const emailError = "Please enter a valid email address";
+  static const phoneNumber = "Phone number";
+  static const phoneNumberError = "Please enter a valid phone number";
 
   static const resetPassword = "Reset your password";
+  static const alreadyHaveAccount = "Already have an account? login!";
+  static const profilePhoto = "Add your profile photo";
+
+  static const String gallery = "Gallery";
+  static const String camera = "Camera";
 }

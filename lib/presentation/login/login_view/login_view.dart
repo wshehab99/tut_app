@@ -4,7 +4,6 @@ import 'package:tut_app/app/app_preferences.dart';
 import 'package:tut_app/app/di.dart';
 import 'package:tut_app/presentation/common/state_renderer/state_renderer_impl.dart';
 import 'package:tut_app/presentation/login/login_view_model/login_view_model.dart';
-import 'package:tut_app/presentation/resources/color_manager.dart';
 import 'package:tut_app/presentation/resources/string_manger.dart';
 import 'package:tut_app/presentation/resources/value_manager.dart';
 
@@ -168,7 +167,7 @@ class _LoginViewState extends State<LoginView> {
                       ),
                       TextButton(
                         child: Text(
-                          StringManger.register,
+                          StringManger.notMember,
                           style: Theme.of(context).textTheme.titleMedium,
                           textAlign: TextAlign.end,
                         ),

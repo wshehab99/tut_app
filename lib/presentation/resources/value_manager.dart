@@ -1,4 +1,6 @@
 class PaddingValuesManager {
+  static const double p0 = 0.0;
+
   static const double p8 = 8.0;
   static const double p10 = 10.0;
   static const double p12 = 12.0;
@@ -36,6 +38,8 @@ class SizeValuesManager {
   static const double s28 = 28.0;
 
   static const double s40 = 40.0;
+  static const double s50 = 50.0;
+
   static const double s60 = 60.0;
   static const double s100 = 100.0;
 }

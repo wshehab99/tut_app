@@ -84,11 +84,11 @@ class _AppServicesClient implements AppServicesClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = {
-      'email': username,
+      'username': username,
       'email': email,
       'password': password,
-      'email': phoneNumber,
-      'email': profilePicture,
+      'phoneNumber': phoneNumber,
+      'profilePicture': profilePicture,
     };
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<AuthenticationResponse>(Options(
