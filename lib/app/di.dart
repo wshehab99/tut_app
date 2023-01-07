@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tut_app/app/app_preferences.dart';
@@ -58,6 +59,7 @@ void initRegisterModule() {
         () => RegisterUseCase(instance<Repository>()));
     instance.registerFactory<RegisterViewModel>(
         () => RegisterViewModel(instance<RegisterUseCase>()));
+    instance.registerFactory<ImagePicker>(() => ImagePicker());
   }
 }
 
@@ -65,6 +67,7 @@ initForgetPasswordModule() {
   if (!GetIt.I.isRegistered<ForgetPasswordUseCase>()) {
     instance.registerFactory<ForgetPasswordUseCase>(
         () => ForgetPasswordUseCase(instance<Repository>()));
+
     instance.registerFactory<ForgetPasswordViewModel>(
         () => ForgetPasswordViewModel(instance<ForgetPasswordUseCase>()));
   }

@@ -1,11 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:tut_app/presentation/resources/asset_manger.dart';
 import 'package:tut_app/presentation/resources/color_manager.dart';
 import 'package:tut_app/presentation/resources/routes_manager.dart';
-import 'package:tut_app/presentation/resources/value_manager.dart';
 
 import '../../app/app_preferences.dart';
 import '../../app/di.dart';

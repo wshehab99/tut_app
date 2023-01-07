@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:tut_app/data/network/request.dart';
 import 'package:tut_app/domain/use_case/register_use_case.dart';
 import 'package:tut_app/presentation/base/base_view_model.dart';
@@ -11,6 +13,8 @@ import '../../../app/app_functions.dart';
 
 class RegisterViewModel extends BaseViewModel
     with RegisterViewModelInputs, RegisterViewModelOutputs {
+  final StreamController<bool> isUserRegisterSuccessfully =
+      StreamController<bool>.broadcast();
   final StreamController<String> _usernameStreamController =
       StreamController<String>.broadcast();
   final StreamController<String> _emailStreamController =
@@ -18,13 +22,15 @@ class RegisterViewModel extends BaseViewModel
 
   final StreamController<String> _passwordStreamController =
       StreamController<String>.broadcast();
-
+  final StreamController<CountryCode> _countryCodeStreamController =
+      StreamController<CountryCode>.broadcast();
   final StreamController<String> _phoneNumberStreamController =
       StreamController<String>.broadcast();
-  final StreamController<String> _profilePhotoStreamController =
-      StreamController<String>.broadcast();
+  final StreamController<File> _profilePhotoStreamController =
+      StreamController<File>.broadcast();
   final StreamController<void> _validateInputStreamController =
       StreamController<void>.broadcast();
+  String _countryCode = "+20";
   final RegisterObject _registerObject = RegisterObject("", "", "", "", "");
   final RegisterUseCase _registerUseCase;
   RegisterViewModel(this._registerUseCase);
@@ -41,6 +47,8 @@ class RegisterViewModel extends BaseViewModel
     _phoneNumberStreamController.close();
     _profilePhotoStreamController.close();
     _validateInputStreamController.close();
+    _countryCodeStreamController.close();
+    isUserRegisterSuccessfully.close();
 
     super.dispose();
   }
@@ -58,7 +66,12 @@ class RegisterViewModel extends BaseViewModel
   Sink get phoneNumber => _phoneNumberStreamController.sink;
 
   @override
-  Sink get profilePhoto => _profilePhotoStreamController.sink;
+  Sink get inputAreAllInputValid => _validateInputStreamController.sink;
+  @override
+  Sink get profilePhotoInput => _profilePhotoStreamController.sink;
+
+  @override
+  Sink get inputCountryCode => _countryCodeStreamController.sink;
 
   @override
   setEmail(String value) {
@@ -84,9 +97,9 @@ class RegisterViewModel extends BaseViewModel
   }
 
   @override
-  setProfilePhoto(String value) {
-    profilePhoto.add(value);
-    _registerObject.copyWith(profileImage: value);
+  setProfilePhoto(File value) {
+    profilePhotoInput.add(value);
+    _registerObject.copyWith(profileImage: value.path);
 
     inputAreAllInputValid.add(null);
   }
@@ -100,15 +113,29 @@ class RegisterViewModel extends BaseViewModel
   }
 
   @override
-  register() {
+  setCountryCode(CountryCode code) {
+    inputCountryCode.add(code);
+    _countryCode = code.dialCode;
+  }
+
+  @override
+  register() async {
     inputState.add(
         LoadingState(stateRendererType: StateRendererType.loadingPopupState));
-    _registerUseCase.execute(RegisterRequest(
-        _registerObject.username,
-        _registerObject.email,
-        _registerObject.password,
-        _registerObject.phone,
-        _registerObject.profileImage));
+    (await _registerUseCase.execute(RegisterRequest(
+            _registerObject.username,
+            _registerObject.email,
+            _registerObject.password,
+            "$_countryCode${_registerObject.phone}",
+            "")))
+        .fold((failure) {
+      inputState.add(ErrorState(
+          message: failure.message,
+          stateRendererType: StateRendererType.errorPopupState));
+    }, (authentication) {
+      inputState.add(ContentState());
+      isUserRegisterSuccessfully.add(true);
+    });
   }
 
   //outputs
@@ -126,15 +153,14 @@ class RegisterViewModel extends BaseViewModel
       .map((phoneNumber) => _validatePhoneNumber(phoneNumber));
 
   @override
-  Stream<bool> get isProfilePhotoValid => _profilePhotoStreamController.stream
-      .map((profilePhoto) => _validateUsername(profilePhoto));
-
-  @override
   Stream<bool> get isUserNameValid => _usernameStreamController.stream
       .map((userName) => _validateUsername(userName));
-
   @override
-  Sink get inputAreAllInputValid => _validateInputStreamController.sink;
+  Stream<CountryCode> get countryCode =>
+      _countryCodeStreamController.stream.map((code) => code);
+  @override
+  Stream<File> get profilePhoto =>
+      _profilePhotoStreamController.stream.map((file) => file);
 
   @override
   Stream<bool> get outputAreAllInputValid =>
@@ -152,16 +178,17 @@ class RegisterViewModel extends BaseViewModel
 
 abstract class RegisterViewModelInputs {
   Sink get username;
-
   Sink get email;
   Sink get password;
   Sink get phoneNumber;
-  Sink get profilePhoto;
+  Sink get inputCountryCode;
+  Sink get profilePhotoInput;
   Sink get inputAreAllInputValid;
   setUsername(String value);
   setPassword(String value);
   setPhoneNumber(String value);
-  setProfilePhoto(String value);
+  setCountryCode(CountryCode code);
+  setProfilePhoto(File value);
   setEmail(String value);
   register();
 }
@@ -171,6 +198,7 @@ abstract class RegisterViewModelOutputs {
   Stream<bool> get isEmailValid;
   Stream<bool> get isPasswordValid;
   Stream<bool> get isPhoneNumberValid;
-  Stream<bool> get isProfilePhotoValid;
+  Stream<CountryCode> get countryCode;
+  Stream<File> get profilePhoto;
   Stream<bool> get outputAreAllInputValid;
 }
