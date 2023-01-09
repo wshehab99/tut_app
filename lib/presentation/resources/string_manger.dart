@@ -40,4 +40,8 @@ class StringManger {
 
   static const String gallery = "Gallery";
   static const String camera = "Camera";
+  static const String home = "Home";
+  static const String search = "Search";
+  static const String notifications = "Notifications";
+  static const String settings = "Settings";
 }

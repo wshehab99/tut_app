@@ -1,5 +1,5 @@
 class AppConstants {
-  static const String baseURL = "https://g3mv6.mocklab.io/";
+  static const String baseURL = "https://905r3.mocklab.io/";
   static const String empty = "";
   static const String appTitle = "Tut";
   static const String contentType = "content-type";

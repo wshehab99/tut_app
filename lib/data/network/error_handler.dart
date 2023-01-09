@@ -5,6 +5,7 @@ import 'package:tut_app/data/network/failure.dart';
 class ErrorHandler implements Exception {
   late Failure failure;
   ErrorHandler.handle(error) {
+    print(error.toString());
     if (error is DioError) {
       failure = _handleError(error);
     } else {

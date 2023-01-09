@@ -13,7 +13,7 @@ class _AppServicesClient implements AppServicesClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://g3mv6.mocklab.io/';
+    baseUrl ??= 'https://905r3.mocklab.io/';
   }
 
   final Dio _dio;
@@ -87,7 +87,7 @@ class _AppServicesClient implements AppServicesClient {
       'username': username,
       'email': email,
       'password': password,
-      'phoneNumber': phoneNumber,
+      'phone_number': phoneNumber,
       'profilePicture': profilePicture,
     };
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -104,6 +104,29 @@ class _AppServicesClient implements AppServicesClient {
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = AuthenticationResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<HomeResponse> getHome() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<HomeResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/home',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = HomeResponse.fromJson(_result.data!);
     return value;
   }
 
