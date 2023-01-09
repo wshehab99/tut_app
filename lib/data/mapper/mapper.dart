@@ -36,3 +36,33 @@ extension ForgetPasswordResponseMapper on ForgetPasswordResponse? {
     );
   }
 }
+
+extension ServiceResponseMapper on ServicesResponse {
+  Services toDomain() =>
+      Services(id.orZero(), title.orEmpty(), image.orEmpty());
+}
+
+extension BanaresResponseMapper on BanaresResponse {
+  BannerAd toDomain() =>
+      BannerAd(id.orZero(), title.orEmpty(), image.orEmpty(), link.orEmpty());
+}
+
+extension StoresResponseMapper on StoresResponse {
+  Store toDomain() => Store(id.orZero(), title.orEmpty(), image.orEmpty());
+}
+
+extension HomeResponseMapper on HomeResponse? {
+  Home toDomain() {
+    final List<Services> services =
+        this?.data?.services.map((element) => element.toDomain()).toList() ??
+            const Iterable.empty().cast<Services>().toList();
+    final List<BannerAd> banares =
+        this?.data?.banares.map((element) => element.toDomain()).toList() ??
+            const Iterable.empty().cast<BannerAd>().toList();
+    final List<Store> stores =
+        this?.data?.stores.map((element) => element.toDomain()).toList() ??
+            const Iterable.empty().cast<Store>().toList();
+    final HomeData data = HomeData(services, banares, stores);
+    return Home(data);
+  }
+}

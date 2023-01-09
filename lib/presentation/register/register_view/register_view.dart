@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tut_app/app/app_preferences.dart';
 import 'package:tut_app/app/di.dart';
 import 'package:tut_app/presentation/common/state_renderer/state_renderer_impl.dart';
 import 'package:tut_app/presentation/register/register_view_model/register_view_model.dart';
@@ -24,8 +25,8 @@ class RegisterView extends StatefulWidget {
 
 class _RegisterViewState extends State<RegisterView> {
   final RegisterViewModel _registerViewModel = instance<RegisterViewModel>();
-  final ImagePicker _imagePicker = instance();
-
+  final ImagePicker _imagePicker = instance<ImagePicker>();
+  final AppPreferences _appPref = instance<AppPreferences>();
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailEditingController = TextEditingController();
   final TextEditingController _usernameEditingController =
@@ -50,6 +51,8 @@ class _RegisterViewState extends State<RegisterView> {
       _registerViewModel.isUserRegisterSuccessfully.stream.listen((isLogged) {
         if (isLogged) {
           SchedulerBinding.instance.addPostFrameCallback((_) {
+            _appPref.setLoggedInSuccessfully();
+
             Navigator.pushReplacementNamed(context, RoutesManager.mainRoute);
           });
         }

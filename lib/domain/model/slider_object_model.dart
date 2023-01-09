@@ -55,3 +55,37 @@ class ForgetPasswordModel {
 
   ForgetPasswordModel(this.message);
 }
+
+class Services {
+  int id;
+  String title;
+  String image;
+  Services(this.id, this.title, this.image);
+}
+
+class BannerAd {
+  int id;
+  String title;
+  String image;
+  String link;
+  BannerAd(this.id, this.title, this.image, this.link);
+}
+
+class Store {
+  int id;
+  String title;
+  String image;
+  Store(this.id, this.title, this.image);
+}
+
+class HomeData {
+  List<Services> services;
+  List<BannerAd> banners;
+  List<Store> stores;
+  HomeData(this.services, this.banners, this.stores);
+}
+
+class Home {
+  HomeData data;
+  Home(this.data);
+}

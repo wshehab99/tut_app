@@ -21,10 +21,12 @@ abstract class AppServicesClient {
   );
   @POST("/api/register")
   Future<AuthenticationResponse> register(
-    @Field("email") String username,
+    @Field("username") String username,
     @Field("email") String email,
     @Field("password") String password,
-    @Field("email") String phoneNumber,
-    @Field("email") String profilePicture,
+    @Field("phone_number") String phoneNumber,
+    @Field("profilePicture") String profilePicture,
   );
+  @GET("/api/home")
+  Future<HomeResponse> getHome();
 }

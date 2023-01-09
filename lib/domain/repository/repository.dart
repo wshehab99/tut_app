@@ -8,4 +8,6 @@ abstract class Repository {
   Future<Either<Failure, ForgetPasswordModel>> forgetPassword(
       ForgetPasswordRequest request);
   Future<Either<Failure, Authentication>> register(RegisterRequest request);
+
+  Future<Either<Failure, Home>> getHome();
 }

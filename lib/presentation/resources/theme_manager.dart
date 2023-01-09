@@ -36,6 +36,7 @@ class ThemeManager {
         color: ColorManager.primary,
         elevation: SizeValuesManager.s4,
         shadowColor: ColorManager.lightPrimary,
+        centerTitle: true,
         titleTextStyle: StyleManager.getRegularStyle(
           fontSize: FontSizeManager.s16,
           color: ColorManager.white,
@@ -98,6 +99,10 @@ class ThemeManager {
           color: ColorManager.darkGrey,
           fontSize: FontSizeManager.s16,
         ),
+        titleSmall: StyleManager.getRegularStyle(
+          color: ColorManager.white,
+          fontSize: FontSizeManager.s16,
+        ),
       ),
       // input decoration theme (text form field)
       inputDecorationTheme: InputDecorationTheme(
@@ -127,6 +132,12 @@ class ThemeManager {
         focusedErrorBorder: InputBorderManager.getInputBorder(
           color: ColorManager.primary,
         ),
+      ),
+      //NavigationBar theme
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        selectedItemColor: ColorManager.primary,
+        unselectedItemColor: ColorManager.lightGrey,
+        elevation: SizeValuesManager.s10,
       ),
     );
   }
