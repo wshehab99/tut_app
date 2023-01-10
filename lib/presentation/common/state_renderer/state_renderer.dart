@@ -92,11 +92,13 @@ class StateRenderer extends StatelessWidget {
       MainAxisSize mainAxisSize = MainAxisSize.max}) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: Column(
-        mainAxisSize: mainAxisSize,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: children,
+      child: Center(
+        child: Column(
+          mainAxisSize: mainAxisSize,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: children,
+        ),
       ),
     );
   }

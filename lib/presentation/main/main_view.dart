@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tut_app/presentation/resources/string_manger.dart';
-import 'pages/home_page.dart';
-import 'pages/notifications_page.dart';
-import 'pages/search_page.dart';
-import 'pages/settings_page.dart';
+import 'pages/home/home_view/home_page.dart';
+import 'pages/notifications/notifications_view/notifications_page.dart';
+import 'pages/search/search_view/search_page.dart';
+import 'pages/settings/settings_view/settings_page.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});

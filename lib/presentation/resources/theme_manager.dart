@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'color_manager.dart';
 import 'font_manager.dart';
@@ -30,12 +31,21 @@ class ThemeManager {
         color: ColorManager.white,
         shadowColor: ColorManager.grey,
         elevation: SizeValuesManager.s4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(SizeValuesManager.s10),
+          ),
+        ),
       ),
       // app bar theme
       appBarTheme: AppBarTheme(
         color: ColorManager.primary,
         elevation: SizeValuesManager.s4,
         shadowColor: ColorManager.lightPrimary,
+        systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: ColorManager.darkPrimary,
+            statusBarIconBrightness: Brightness.light,
+            statusBarBrightness: Brightness.dark),
         centerTitle: true,
         titleTextStyle: StyleManager.getRegularStyle(
           fontSize: FontSizeManager.s16,
@@ -87,6 +97,10 @@ class ThemeManager {
           color: ColorManager.grey1,
           fontSize: FontSizeManager.s12,
         ),
+        headlineSmall: StyleManager.getBoldStyle(
+          color: ColorManager.primary,
+          fontSize: FontSizeManager.s14,
+        ),
         bodyLarge: StyleManager.getRegularStyle(
           color: ColorManager.grey,
           fontSize: FontSizeManager.s12,
@@ -102,6 +116,10 @@ class ThemeManager {
         titleSmall: StyleManager.getRegularStyle(
           color: ColorManager.white,
           fontSize: FontSizeManager.s16,
+        ),
+        displaySmall: StyleManager.getRegularStyle(
+          color: ColorManager.grey2,
+          fontSize: FontSizeManager.s14,
         ),
       ),
       // input decoration theme (text form field)

@@ -25,6 +25,7 @@ class RouteGenerator {
       case RoutesManager.splashRoute:
         return MaterialPageRoute(builder: (_) => const SplashView());
       case RoutesManager.mainRoute:
+        initHomeModule();
         return MaterialPageRoute(builder: (_) => const MainView());
       case RoutesManager.storeDetailsRoute:
         return MaterialPageRoute(builder: (_) => const StoreDetailsView());
