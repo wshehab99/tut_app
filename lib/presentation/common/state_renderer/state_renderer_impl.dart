@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/app/constants.dart';
 import 'package:tut_app/presentation/common/state_renderer/state_renderer.dart';
@@ -15,7 +16,7 @@ class LoadingState implements FlowState {
   LoadingState(
       {required this.stateRendererType, this.message = StringManger.loading});
   @override
-  String getMessage() => message;
+  String getMessage() => message.tr();
 
   @override
   StateRendererType getStateRendererType() => stateRendererType;

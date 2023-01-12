@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/app/di.dart';
 import 'package:tut_app/domain/model/slider_object_model.dart';
@@ -50,11 +51,11 @@ class _HomePageState extends State<HomePage> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           _getBanners(),
           const SizedBox(height: SizeValuesManager.s10),
-          _getSection(StringManger.services),
+          _getSection(StringManger.services.tr()),
           const SizedBox(height: SizeValuesManager.s10),
           _getServices(),
           const SizedBox(height: SizeValuesManager.s10),
-          _getSection(StringManger.stores),
+          _getSection(StringManger.stores.tr()),
           const SizedBox(height: SizeValuesManager.s10),
           _getStores()
         ]),

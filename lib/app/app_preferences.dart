@@ -1,4 +1,4 @@
-// ignore: import_of_legacy_library_into_null_safe
+import "package:flutter/material.dart";
 import "package:shared_preferences/shared_preferences.dart";
 import "package:tut_app/app/constants.dart";
 import "package:tut_app/app/extension.dart";
@@ -31,5 +31,27 @@ class AppPreferences {
 
   Future<void> setLoggedOutSuccessfully() async {
     _sharedPreferences.remove(AppConstants.loginSuccessfully);
+  }
+
+  Future<void> changeAppLanguage() async {
+    String language = await getAppLanguage();
+    if (language == LanguageType.arabic.getLanguage()) {
+      //set english
+      await _sharedPreferences.setString(
+          AppConstants.languageKey, LanguageType.english.getLanguage());
+    } else {
+      await _sharedPreferences.setString(
+          AppConstants.languageKey, LanguageType.arabic.getLanguage());
+    }
+  }
+
+  Future<Locale> getLocal() async {
+    String language = await getAppLanguage();
+
+    if (language == LanguageType.arabic.getLanguage()) {
+      return LanguageType.arabic.getLocale();
+    } else {
+      return LanguageType.english.getLocale();
+    }
   }
 }

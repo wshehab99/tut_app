@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:tut_app/app/app_preferences.dart';
@@ -88,11 +89,11 @@ class _LoginViewState extends State<LoginView> {
                     return TextFormField(
                       controller: _userNameController,
                       decoration: InputDecoration(
-                        hintText: StringManger.username,
-                        labelText: StringManger.username,
+                        hintText: StringManger.username.tr(),
+                        labelText: StringManger.username.tr(),
                         errorText: (snapshots.data ?? true)
                             ? null
-                            : StringManger.usernameError,
+                            : StringManger.usernameError.tr(),
                       ),
                     );
                   }),
@@ -110,11 +111,11 @@ class _LoginViewState extends State<LoginView> {
                       controller: _passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
-                        hintText: StringManger.password,
-                        labelText: StringManger.password,
+                        hintText: StringManger.password.tr(),
+                        labelText: StringManger.password.tr(),
                         errorText: (snapshots.data ?? true)
                             ? null
-                            : StringManger.passwordError,
+                            : StringManger.passwordError.tr(),
                       ),
                     );
                   }),
@@ -137,7 +138,7 @@ class _LoginViewState extends State<LoginView> {
                                 _loginViewModel.login();
                               }
                             : null,
-                        child: const Text(StringManger.login),
+                        child: const Text(StringManger.login).tr(),
                       ),
                     );
                   }),
@@ -156,7 +157,7 @@ class _LoginViewState extends State<LoginView> {
                     children: [
                       TextButton(
                         child: Text(
-                          StringManger.forgetPassword,
+                          StringManger.forgetPassword.tr(),
                           style: Theme.of(context).textTheme.titleMedium,
                           textAlign: TextAlign.end,
                         ),
@@ -167,7 +168,7 @@ class _LoginViewState extends State<LoginView> {
                       ),
                       TextButton(
                         child: Text(
-                          StringManger.notMember,
+                          StringManger.notMember.tr(),
                           style: Theme.of(context).textTheme.titleMedium,
                           textAlign: TextAlign.end,
                         ),

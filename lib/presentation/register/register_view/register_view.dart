@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -113,11 +114,11 @@ class _RegisterViewState extends State<RegisterView> {
                     return TextFormField(
                       controller: _usernameEditingController,
                       decoration: InputDecoration(
-                        hintText: StringManger.username,
-                        labelText: StringManger.username,
+                        hintText: StringManger.username.tr(),
+                        labelText: StringManger.username.tr(),
                         errorText: (snapshot.data ?? true)
                             ? null
-                            : StringManger.usernameError,
+                            : StringManger.usernameError.tr(),
                       ),
                     );
                   }),
@@ -130,11 +131,11 @@ class _RegisterViewState extends State<RegisterView> {
                     return TextFormField(
                       controller: _emailEditingController,
                       decoration: InputDecoration(
-                        hintText: StringManger.email,
-                        labelText: StringManger.email,
+                        hintText: StringManger.email.tr(),
+                        labelText: StringManger.email.tr(),
                         errorText: (snapshot.data ?? true)
                             ? null
-                            : StringManger.emailError,
+                            : StringManger.emailError.tr(),
                       ),
                     );
                   }),
@@ -147,11 +148,11 @@ class _RegisterViewState extends State<RegisterView> {
                     return TextFormField(
                       controller: _passwordEditingController,
                       decoration: InputDecoration(
-                        hintText: StringManger.password,
-                        labelText: StringManger.password,
+                        hintText: StringManger.password.tr(),
+                        labelText: StringManger.password.tr(),
                         errorText: (snapshot.data ?? true)
                             ? null
-                            : StringManger.passwordError,
+                            : StringManger.passwordError.tr(),
                       ),
                     );
                   }),
@@ -207,11 +208,11 @@ class _RegisterViewState extends State<RegisterView> {
                             controller: _phoneNumberEditingController,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
-                              hintText: StringManger.phoneNumber,
-                              labelText: StringManger.phoneNumber,
+                              hintText: StringManger.phoneNumber.tr(),
+                              labelText: StringManger.phoneNumber.tr(),
                               errorText: (snapshot.data ?? true)
                                   ? null
-                                  : StringManger.phoneNumberError,
+                                  : StringManger.phoneNumberError.tr(),
                             ),
                           );
                         }),
@@ -250,7 +251,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 await _registerViewModel.register();
                               }
                             : null,
-                        child: const Text(StringManger.register),
+                        child: const Text(StringManger.register).tr(),
                       ),
                     );
                   }),
@@ -264,7 +265,7 @@ class _RegisterViewState extends State<RegisterView> {
                           vertical: PaddingValuesManager.p0)),
                 ),
                 child: Text(
-                  StringManger.alreadyHaveAccount,
+                  StringManger.alreadyHaveAccount.tr(),
                   style: Theme.of(context).textTheme.titleMedium,
                   textAlign: TextAlign.center,
                 ),
@@ -289,7 +290,7 @@ class _RegisterViewState extends State<RegisterView> {
         Flexible(
           flex: 2,
           child: Text(
-            StringManger.profilePhoto,
+            StringManger.profilePhoto.tr(),
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ),
@@ -329,7 +330,7 @@ class _RegisterViewState extends State<RegisterView> {
             children: [
               ListTile(
                 leading: const Icon(Icons.arrow_back_ios),
-                title: const Text(StringManger.gallery),
+                title: const Text(StringManger.gallery).tr(),
                 trailing: const Icon(Icons.photo),
                 onTap: () {
                   _pickImage(ImageSource.gallery);
@@ -338,7 +339,7 @@ class _RegisterViewState extends State<RegisterView> {
               ),
               ListTile(
                 leading: const Icon(Icons.arrow_back_ios),
-                title: const Text(StringManger.camera),
+                title: const Text(StringManger.camera).tr(),
                 trailing: const Icon(Icons.camera_alt_outlined),
                 onTap: () {
                   _pickImage(ImageSource.camera);

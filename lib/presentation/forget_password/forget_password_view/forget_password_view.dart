@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/app/di.dart';
 import 'package:tut_app/presentation/common/state_renderer/state_renderer_impl.dart';
@@ -67,11 +68,11 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                 return TextFormField(
                   controller: _emailController,
                   decoration: InputDecoration(
-                    hintText: StringManger.email,
-                    labelText: StringManger.email,
+                    hintText: StringManger.email.tr(),
+                    labelText: StringManger.email.tr(),
                     errorText: (snapshots.data ?? true)
                         ? null
-                        : StringManger.emailError,
+                        : StringManger.emailError.tr(),
                   ),
                 );
               }),
@@ -94,7 +95,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                             _forgetPasswordViewModel.forgetPassword();
                           }
                         : null,
-                    child: const Text(StringManger.resetPassword),
+                    child: const Text(StringManger.resetPassword).tr(),
                   ),
                 );
               }),
