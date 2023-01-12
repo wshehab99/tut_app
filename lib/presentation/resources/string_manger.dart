@@ -19,6 +19,7 @@ class StringManger {
 
   static const forgetPassword = "Forget password?";
   static const usernameError = "Please enter a valid username";
+
   static const passwordError = "Please enter a valid password";
 
   static const login = "Login";
@@ -44,6 +45,8 @@ class StringManger {
   static const String search = "Search";
   static const String notifications = "Notifications";
   static const String settings = "Settings";
-   static const String services = "Services";
+  static const String services = "Services";
   static const String stores = "Stores";
+
+  static const String description = "Description";
 }

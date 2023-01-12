@@ -7,7 +7,7 @@ import 'package:tut_app/presentation/onboarding/onboarding_view/onboarding_view.
 import 'package:tut_app/presentation/register/register_view/register_view.dart';
 import 'package:tut_app/presentation/resources/string_manger.dart';
 import 'package:tut_app/presentation/splash/splash_view.dart';
-import 'package:tut_app/presentation/store_details/store_details_view.dart';
+import 'package:tut_app/presentation/store_details/store_details_view/store_details_view.dart';
 
 class RoutesManager {
   static const String splashRoute = "/";
@@ -28,6 +28,7 @@ class RouteGenerator {
         initHomeModule();
         return MaterialPageRoute(builder: (_) => const MainView());
       case RoutesManager.storeDetailsRoute:
+        initStoreDetailsModule();
         return MaterialPageRoute(builder: (_) => const StoreDetailsView());
       case RoutesManager.loginRoute:
         initLoginModule();

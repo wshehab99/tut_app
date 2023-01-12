@@ -9,9 +9,11 @@ class AppConstants {
 
   static const String language = "language";
   static const int timeOut = 60 * 1000;
+  static const int cacheTimeOut = 5 * 60 * 1000;
   static const int zero = 0;
   static const String languageKey = "languageKey";
   static const String onBoardingView = "onBoardingView";
-
+  static const String cachedHomeResponse = "cachedHomeResponse";
+  static const String cachedStoreDetailsResponse = "cachedStoreDetailsResponse";
   static const String loginSuccessfully = "loginSuccessfully";
 }
