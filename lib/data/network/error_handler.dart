@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:tut_app/app/extension.dart';
 import 'package:tut_app/data/network/failure.dart';
 
@@ -76,37 +77,38 @@ extension DataSourceExtension on DataSource {
   Failure getFailure() {
     switch (this) {
       case DataSource.success:
-        return Failure(ResponseCode.success, StringManger.success);
+        return Failure(ResponseCode.success, StringManger.success.tr());
       case DataSource.noContent:
-        return Failure(ResponseCode.noContent, StringManger.noContent);
+        return Failure(ResponseCode.noContent, StringManger.noContent.tr());
       case DataSource.badRequest:
-        return Failure(ResponseCode.badRequest, StringManger.badRequest);
+        return Failure(ResponseCode.badRequest, StringManger.badRequest.tr());
       case DataSource.forbidden:
-        return Failure(ResponseCode.forbidden, StringManger.forbidden);
+        return Failure(ResponseCode.forbidden, StringManger.forbidden.tr());
       case DataSource.unauthorized:
-        return Failure(ResponseCode.unauthorized, StringManger.unauthorized);
-      case DataSource.notFound:
-        return Failure(ResponseCode.notFound, StringManger.notFound);
-      case DataSource.internalServerError:
         return Failure(
-            ResponseCode.internalServerError, StringManger.internalServerError);
+            ResponseCode.unauthorized, StringManger.unauthorized.tr());
+      case DataSource.notFound:
+        return Failure(ResponseCode.notFound, StringManger.notFound.tr());
+      case DataSource.internalServerError:
+        return Failure(ResponseCode.internalServerError,
+            StringManger.internalServerError.tr());
       case DataSource.connectTimeout:
         return Failure(
-            ResponseCode.connectTimeout, StringManger.connectTimeout);
+            ResponseCode.connectTimeout, StringManger.connectTimeout.tr());
       case DataSource.cancelled:
-        return Failure(ResponseCode.cancelled, StringManger.cancelled);
+        return Failure(ResponseCode.cancelled, StringManger.cancelled.tr());
       case DataSource.receiveTimeout:
         return Failure(
-            ResponseCode.receiveTimeout, StringManger.receiveTimeout);
+            ResponseCode.receiveTimeout, StringManger.receiveTimeout.tr());
       case DataSource.sendTimeout:
-        return Failure(ResponseCode.sendTimeout, StringManger.sendTimeout);
+        return Failure(ResponseCode.sendTimeout, StringManger.sendTimeout.tr());
       case DataSource.cacheError:
-        return Failure(ResponseCode.cacheError, StringManger.cacheError);
+        return Failure(ResponseCode.cacheError, StringManger.cacheError.tr());
       case DataSource.noInternetConnection:
         return Failure(ResponseCode.noInternetConnection,
-            StringManger.noInternetConnection);
+            StringManger.noInternetConnection.tr());
       case DataSource.unknown:
-        return Failure(ResponseCode.unknown, StringManger.unknown);
+        return Failure(ResponseCode.unknown, StringManger.unknown.tr());
     }
   }
 }

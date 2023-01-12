@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -75,7 +76,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                         alignment: Alignment.bottomRight,
                         child: TextButton(
                           child: Text(
-                            StringManger.skip,
+                            StringManger.skip.tr(),
                             style: Theme.of(context).textTheme.titleMedium,
                             textAlign: TextAlign.end,
                           ),

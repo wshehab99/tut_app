@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:tut_app/presentation/base/base_view_model.dart';
 
 import '../../../domain/model/slider_object_model.dart';
@@ -61,23 +62,23 @@ class OnBoardingViewModel extends BaseViewModel
   List<SliderObject> _getPages() {
     return [
       SliderObject(
-        title: StringManger.onBoardingTitle1,
-        subTitle: StringManger.onBoardingSubTitle1,
+        title: StringManger.onBoardingTitle1.tr(),
+        subTitle: StringManger.onBoardingSubTitle1.tr(),
         imagePath: ImageAsset.onboardingLogo1,
       ),
       SliderObject(
-        title: StringManger.onBoardingTitle2,
-        subTitle: StringManger.onBoardingSubTitle2,
+        title: StringManger.onBoardingTitle2.tr(),
+        subTitle: StringManger.onBoardingSubTitle2.tr(),
         imagePath: ImageAsset.onboardingLogo2,
       ),
       SliderObject(
-        title: StringManger.onBoardingTitle3,
-        subTitle: StringManger.onBoardingSubTitle3,
+        title: StringManger.onBoardingTitle3.tr(),
+        subTitle: StringManger.onBoardingSubTitle3.tr(),
         imagePath: ImageAsset.onboardingLogo3,
       ),
       SliderObject(
-        title: StringManger.onBoardingTitle4,
-        subTitle: StringManger.onBoardingSubTitle4,
+        title: StringManger.onBoardingTitle4.tr(),
+        subTitle: StringManger.onBoardingSubTitle4.tr(),
         imagePath: ImageAsset.onboardingLogo4,
       ),
     ];

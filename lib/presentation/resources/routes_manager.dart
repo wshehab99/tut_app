@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/app/di.dart';
 import 'package:tut_app/presentation/forget_password/forget_password_view/forget_password_view.dart';
@@ -52,12 +53,12 @@ class RouteGenerator {
               appBar: AppBar(
                 title: const Text(
                   StringManger.noRouteFound,
-                ),
+                ).tr(),
               ),
-              body: const Center(
-                  child: Text(
+              body: Center(
+                  child: const Text(
                 StringManger.noRouteFound,
-              )),
+              ).tr()),
             ));
   }
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/app/di.dart';
 import 'package:tut_app/domain/model/slider_object_model.dart';
@@ -63,7 +64,7 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _getSection(StringManger.services),
+                            _getSection(StringManger.services.tr()),
                             const SizedBox(
                               height: SizeValuesManager.s10,
                             ),
@@ -79,7 +80,7 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
                             const SizedBox(
                               height: SizeValuesManager.s10,
                             ),
-                            _getSection(StringManger.description),
+                            _getSection(StringManger.description.tr()),
                             const SizedBox(
                               height: SizeValuesManager.s10,
                             ),

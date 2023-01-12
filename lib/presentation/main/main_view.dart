@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tut_app/presentation/resources/string_manger.dart';
 import 'pages/home/home_view/home_page.dart';
@@ -19,11 +20,11 @@ class _MainViewState extends State<MainView> {
     NotificationsPage(),
     SettingsPage(),
   ];
-  final List<String> _titles = const [
-    StringManger.home,
-    StringManger.search,
-    StringManger.notifications,
-    StringManger.settings,
+  final List<String> _titles = [
+    StringManger.home.tr(),
+    StringManger.search.tr(),
+    StringManger.notifications.tr(),
+    StringManger.settings.tr(),
   ];
   int _currentIndex = 0;
   @override
@@ -35,30 +36,30 @@ class _MainViewState extends State<MainView> {
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.home_outlined,
             ),
-            label: StringManger.home,
+            label: StringManger.home.tr(),
           ),
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.search,
             ),
-            label: StringManger.search,
+            label: StringManger.search.tr(),
           ),
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.notifications,
             ),
-            label: StringManger.notifications,
+            label: StringManger.notifications.tr(),
           ),
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.settings,
             ),
-            label: StringManger.settings,
+            label: StringManger.settings.tr(),
           ),
         ],
         onTap: _onTap,

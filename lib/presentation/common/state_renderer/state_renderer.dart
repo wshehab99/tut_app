@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tut_app/presentation/resources/asset_manger.dart';
@@ -49,7 +50,7 @@ class StateRenderer extends StatelessWidget {
             JsonAssetManager.error,
           ),
           _getMessage(message, context),
-          _getRetryButton(context, StringManger.cancel),
+          _getRetryButton(context, StringManger.cancel.tr()),
         ]);
       case StateRendererType.successPopupState:
         return _getPopupDialog(context: context, children: [
@@ -71,7 +72,7 @@ class StateRenderer extends StatelessWidget {
             JsonAssetManager.error,
           ),
           _getMessage(message, context),
-          _getRetryButton(context, StringManger.retryAgain),
+          _getRetryButton(context, StringManger.retryAgain.tr()),
         ]);
       case StateRendererType.emptyFullScreenState:
         return _getItemColumn(children: [
