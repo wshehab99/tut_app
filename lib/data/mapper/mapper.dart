@@ -66,3 +66,8 @@ extension HomeResponseMapper on HomeResponse? {
     return Home(data);
   }
 }
+
+extension StoreDetailsResponseMapper on StoreDetailsResponse {
+  StoreDetails toDomain() => StoreDetails(id.orZero(), title.orEmpty(),
+      image.orEmpty(), details.orEmpty(), services.orEmpty(), about.orEmpty());
+}
