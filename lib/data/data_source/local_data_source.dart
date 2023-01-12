@@ -6,7 +6,7 @@ import '../response/response.dart';
 abstract class LocalDataSource {
   Future<HomeResponse> getHomeData();
   Future<StoreDetailsResponse> getStoreDetails();
-
+  Future<void> clearCache();
   Future<void> setHomeResponseToCache(HomeResponse homeResponse);
   Future<void> setStoreDetailsResponseToCache(
       StoreDetailsResponse storeDetailsResponse);
@@ -46,6 +46,11 @@ class LocalDataSourceImp implements LocalDataSource {
       StoreDetailsResponse storeDetailsResponse) async {
     cachedData[AppConstants.cachedStoreDetailsResponse] =
         CachedData(storeDetailsResponse);
+  }
+
+  @override
+  Future<void> clearCache() async {
+    cachedData.clear();
   }
 }
 

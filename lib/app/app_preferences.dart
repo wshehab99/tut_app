@@ -28,4 +28,8 @@ class AppPreferences {
   Future<void> setOnboardingViewed() async {
     _sharedPreferences.setBool(AppConstants.onBoardingView, true);
   }
+
+  Future<void> setLoggedOutSuccessfully() async {
+    _sharedPreferences.remove(AppConstants.loginSuccessfully);
+  }
 }
