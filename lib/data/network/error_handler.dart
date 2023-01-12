@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:tut_app/app/extension.dart';
 import 'package:tut_app/data/network/failure.dart';
 
+import '../../presentation/resources/string_manger.dart';
+
 class ErrorHandler implements Exception {
   late Failure failure;
   ErrorHandler.handle(error) {
@@ -70,70 +72,41 @@ class ResponseCode {
   static const int unknown = -7; //
 }
 
-class ResponseMessage {
-  static const String success = "Success"; // success with data
-  static const String noContent =
-      "Success"; // success with no data (no content)
-  static const String badRequest =
-      "Bad request, Try again later"; // failure, API rejected request
-  static const String unauthorized =
-      "You are not authorized to do that"; // failure, user is not authorized
-  static const String forbidden =
-      "Forbidden request, Try again later"; //  failure, API rejected request
-  static const String internalServerError =
-      "Something went wrong try again later."; // failure, crash in server side
-  static const String notFound =
-      "Content not found, try again later."; // failure,
-  // local status code
-  static const String connectTimeout =
-      "Connection take a long time, Please check your internet connection and try again later."; //
-  static const String cancelled = "Request was cancelled."; //
-  static const String receiveTimeout =
-      "Receive take a long time, Please check your internet connection and try again later."; //
-  static const String sendTimeout =
-      "Send take a long time, Please check your internet connection and try again later."; //
-  static const String cacheError = "Cache error, try again later."; //
-  static const String noInternetConnection =
-      "No internet connection, Please check your internet connection and try again later."; //
-  static const String unknown =
-      "Something went wrong, Please try again later"; //
-}
-
 extension DataSourceExtension on DataSource {
   Failure getFailure() {
     switch (this) {
       case DataSource.success:
-        return Failure(ResponseCode.success, ResponseMessage.success);
+        return Failure(ResponseCode.success, StringManger.success);
       case DataSource.noContent:
-        return Failure(ResponseCode.noContent, ResponseMessage.noContent);
+        return Failure(ResponseCode.noContent, StringManger.noContent);
       case DataSource.badRequest:
-        return Failure(ResponseCode.badRequest, ResponseMessage.badRequest);
+        return Failure(ResponseCode.badRequest, StringManger.badRequest);
       case DataSource.forbidden:
-        return Failure(ResponseCode.forbidden, ResponseMessage.forbidden);
+        return Failure(ResponseCode.forbidden, StringManger.forbidden);
       case DataSource.unauthorized:
-        return Failure(ResponseCode.unauthorized, ResponseMessage.unauthorized);
+        return Failure(ResponseCode.unauthorized, StringManger.unauthorized);
       case DataSource.notFound:
-        return Failure(ResponseCode.notFound, ResponseMessage.notFound);
+        return Failure(ResponseCode.notFound, StringManger.notFound);
       case DataSource.internalServerError:
-        return Failure(ResponseCode.internalServerError,
-            ResponseMessage.internalServerError);
+        return Failure(
+            ResponseCode.internalServerError, StringManger.internalServerError);
       case DataSource.connectTimeout:
         return Failure(
-            ResponseCode.connectTimeout, ResponseMessage.connectTimeout);
+            ResponseCode.connectTimeout, StringManger.connectTimeout);
       case DataSource.cancelled:
-        return Failure(ResponseCode.cancelled, ResponseMessage.cancelled);
+        return Failure(ResponseCode.cancelled, StringManger.cancelled);
       case DataSource.receiveTimeout:
         return Failure(
-            ResponseCode.receiveTimeout, ResponseMessage.receiveTimeout);
+            ResponseCode.receiveTimeout, StringManger.receiveTimeout);
       case DataSource.sendTimeout:
-        return Failure(ResponseCode.sendTimeout, ResponseMessage.sendTimeout);
+        return Failure(ResponseCode.sendTimeout, StringManger.sendTimeout);
       case DataSource.cacheError:
-        return Failure(ResponseCode.cacheError, ResponseMessage.cacheError);
+        return Failure(ResponseCode.cacheError, StringManger.cacheError);
       case DataSource.noInternetConnection:
         return Failure(ResponseCode.noInternetConnection,
-            ResponseMessage.noInternetConnection);
+            StringManger.noInternetConnection);
       case DataSource.unknown:
-        return Failure(ResponseCode.unknown, ResponseMessage.unknown);
+        return Failure(ResponseCode.unknown, StringManger.unknown);
     }
   }
 }
